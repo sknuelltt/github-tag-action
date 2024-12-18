@@ -60,13 +60,15 @@ export function isPr(ref: string) {
 export function getLatestTag(
   tags: Tags,
   prefixRegex: RegExp,
-  tagPrefix: string
+  tagPrefix: string,
+  latestTagFilter: string
 ) {
   return (
     tags.find(
       (tag) =>
         prefixRegex.test(tag.name) &&
-        !prerelease(tag.name.replace(prefixRegex, ''))
+        !prerelease(tag.name.replace(prefixRegex, '')) &&
+        tag.name.includes(latestTagFilter)
     ) || {
       name: `${tagPrefix}0.0.0`,
       commit: {
