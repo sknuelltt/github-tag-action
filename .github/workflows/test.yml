@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - feat/latest-tag-filter
 
 jobs:
   test:
