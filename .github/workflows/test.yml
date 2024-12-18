@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - feat/latest-tag-filter
+      - feat/latest-tag-filter #bump
 
 jobs:
   test:
