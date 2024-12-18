@@ -74,7 +74,12 @@ export default async function main() {
     prefixRegex,
     /true/i.test(shouldFetchAllTags)
   );
-  const latestTag = getLatestTag(validTags, prefixRegex, tagPrefix, latestTagFilter);
+  const latestTag = getLatestTag(
+    validTags,
+    prefixRegex,
+    tagPrefix,
+    latestTagFilter
+  );
   const latestPrereleaseTag = getLatestPrereleaseTag(
     validTags,
     identifier,
