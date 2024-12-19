@@ -20,7 +20,8 @@ export default async function main() {
   const defaultPreReleaseBump = core.getInput('default_prerelease_bump') as
     | ReleaseType
     | 'false';
-  const forceDefaultPreReleaseBump = core.getInput('force_default_prerelease_bump') === 'true';
+  const forceDefaultPreReleaseBump =
+    core.getInput('force_default_prerelease_bump') === 'true';
   const tagPrefix = core.getInput('tag_prefix');
   const customTag = core.getInput('custom_tag');
   const releaseBranches = core.getInput('release_branches');
