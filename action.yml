@@ -26,6 +26,10 @@ inputs:
     description: "Which type of bump to use when none explicitly provided when commiting to a prerelease branch (default: `prerelease`)."
     required: false
     default: "prerelease"
+  force_default_prerelease_bump:
+    description: "Allows you to force the chosen default_prerelease_bump independent from computed bumps (default: `false`)."
+    required: false
+    default: "false"
   tag_prefix:
     description: "A prefix to the tag name (default: `v`)."
     required: false

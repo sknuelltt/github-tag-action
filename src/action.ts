@@ -20,7 +20,7 @@ export default async function main() {
   const defaultPreReleaseBump = core.getInput('default_prerelease_bump') as
     | ReleaseType
     | 'false';
-  const forcePreReleaseBump = core.getInput('force_prerelease_bump') === 'true';
+  const forceDefaultPreReleaseBump = core.getInput('force_default_prerelease_bump') === 'true';
   const tagPrefix = core.getInput('tag_prefix');
   const customTag = core.getInput('custom_tag');
   const releaseBranches = core.getInput('release_branches');
@@ -160,15 +160,8 @@ export default async function main() {
       return;
     }
 
-    if (
-        isPrerelease && (
-            // If we don't have an automatic bump for the prerelease
-            !bump ||
-            // or we want to enforce prerelease bumps for non-major changes
-            (forcePreReleaseBump && !/major$/.test(bump))
-        )
-    ) {
-      // set our bump as the default
+    // If we don't have an automatic bump for the prerelease or in case we want to force it, set to default.
+    if (isPrerelease && (!bump || forceDefaultPreReleaseBump)) {
       bump = defaultPreReleaseBump;
     }
 
