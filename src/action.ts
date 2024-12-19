@@ -20,8 +20,8 @@ export default async function main() {
   const defaultPreReleaseBump = core.getInput('default_prerelease_bump') as
     | ReleaseType
     | 'false';
+  const forcePreReleaseBump = core.getInput('force_prerelease_bump') === 'true';
   const tagPrefix = core.getInput('tag_prefix');
-  const latestTagFilter = core.getInput('latest_tag_filter');
   const customTag = core.getInput('custom_tag');
   const releaseBranches = core.getInput('release_branches');
   const preReleaseBranches = core.getInput('pre_release_branches');
@@ -32,6 +32,7 @@ export default async function main() {
   const dryRun = core.getInput('dry_run');
   const customReleaseRules = core.getInput('custom_release_rules');
   const shouldFetchAllTags = core.getInput('fetch_all_tags');
+  const latestTagFilter = core.getInput('latest_tag_filter');
   const commitSha = core.getInput('commit_sha');
 
   let mappedReleaseRules;
@@ -159,8 +160,15 @@ export default async function main() {
       return;
     }
 
-    // If we don't have an automatic bump for the prerelease, just set our bump as the default
-    if (isPrerelease && !bump) {
+    if (
+        isPrerelease && (
+            // If we don't have an automatic bump for the prerelease
+            !bump ||
+            // or we want to enforce prerelease bumps for non-major changes
+            (forcePreReleaseBump && !/major$/.test(bump))
+        )
+    ) {
+      // set our bump as the default
       bump = defaultPreReleaseBump;
     }
 
