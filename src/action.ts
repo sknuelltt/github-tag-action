@@ -64,10 +64,10 @@ export default async function main() {
   const isPullRequest = isPr(GITHUB_REF);
   const isPrerelease = !isReleaseBranch && !isPullRequest && isPreReleaseBranch;
 
-  core.setOutput('isReleaseBranch', isPreReleaseBranch);
-  core.setOutput('isPullRequest', isPreReleaseBranch);
-  core.setOutput('isPreReleaseBranch', isPreReleaseBranch);
-  core.setOutput('isPrerelease', isPrerelease);
+  core.debug('isReleaseBranch: ' + isPreReleaseBranch);
+  core.debug('isPullRequest: ' + isPreReleaseBranch);
+  core.debug('isPreReleaseBranch: ' + isPreReleaseBranch);
+  core.debug('isPrerelease:' +  isPrerelease);
 
   // Sanitize identifier according to
   // https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions
