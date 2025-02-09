@@ -81,11 +81,16 @@ export function getLatestTag(
 export function getLatestPrereleaseTag(
   tags: Tags,
   identifier: string,
-  prefixRegex: RegExp
+  prefixRegex: RegExp,
+  latestTagFilter: string
 ) {
   return tags
     .filter((tag) => prerelease(tag.name.replace(prefixRegex, '')))
-    .find((tag) => tag.name.replace(prefixRegex, '').match(identifier));
+    .find(
+        (tag) =>
+            tag.name.replace(prefixRegex, '').match(identifier) &&
+            tag.name.includes(latestTagFilter)
+    );
 }
 
 export function mapCustomReleaseRules(customReleaseTypes: string) {

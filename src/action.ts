@@ -90,7 +90,8 @@ export default async function main() {
   const latestPrereleaseTag = getLatestPrereleaseTag(
     validTags,
     identifier,
-    prefixRegex
+    prefixRegex,
+    latestTagFilter
   );
 
   let commits: Await<ReturnType<typeof getCommits>>;
