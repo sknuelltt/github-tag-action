@@ -49,6 +49,7 @@ jobs:
 - **force_default_prerelease_bump** _(optional)_ - Allows you to force the chosen default_prerelease_bump independent from computed bumps (default: `false`).
 - **custom_tag** _(optional)_ - Custom tag name. If specified, it overrides bump settings.
 - **latest_tag_filter** _(optional)_ - Latest tag filter. If specified, this list of tags found in the repo will be filtered by this substring.
+- **latest_prerelease_tag_filter** _(optional)_ - Latest tag filter. If specified, this list of prerelease tags found in the repo will be filtered by this substring.
 - **create_annotated_tag** _(optional)_ - Boolean to create an annotated rather than a lightweight one (default: `false`).
 - **tag_prefix** _(optional)_ - A prefix to the tag name (default: `v`).
 - **append_to_pre_release_tag** _(optional)_ - A suffix to the pre-release tag name (default: `<branch>`).

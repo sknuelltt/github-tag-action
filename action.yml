@@ -43,6 +43,9 @@ inputs:
   latest_tag_filter:
     description: "Latest tag filter. If specified, this list of tags found in the repo will be filtered by this substring."
     required: false
+  latest_prerelease_tag_filter:
+    description: "Latest prerelease tag filter. If specified, this list of prerelease tags found in the repo will be filtered by this substring."
+    required: false
   custom_release_rules:
     description: "Comma separated list of release rules. Format: `<keyword>:<release_type>`. Example: `hotfix:patch,pre-feat:preminor`."
     required: false
