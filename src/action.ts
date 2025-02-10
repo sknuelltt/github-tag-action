@@ -34,6 +34,7 @@ export default async function main() {
   const customReleaseRules = core.getInput('custom_release_rules');
   const shouldFetchAllTags = core.getInput('fetch_all_tags');
   const latestTagFilter = core.getInput('latest_tag_filter');
+  const latestPrereleaseTagFilter = core.getInput('latest_prerelease_tag_filter');
   const commitSha = core.getInput('commit_sha');
 
   let mappedReleaseRules;
@@ -91,7 +92,7 @@ export default async function main() {
     validTags,
     identifier,
     prefixRegex,
-    latestTagFilter
+    latestPrereleaseTagFilter
   );
 
   let commits: Await<ReturnType<typeof getCommits>>;

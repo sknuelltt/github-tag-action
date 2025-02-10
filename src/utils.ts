@@ -82,14 +82,14 @@ export function getLatestPrereleaseTag(
   tags: Tags,
   identifier: string,
   prefixRegex: RegExp,
-  latestTagFilter: string
+  latestPrereleaseTagFilter: string
 ) {
   return tags
     .filter((tag) => prerelease(tag.name.replace(prefixRegex, '')))
     .find(
         (tag) =>
             tag.name.replace(prefixRegex, '').match(identifier) &&
-            tag.name.includes(latestTagFilter)
+            tag.name.includes(latestPrereleaseTagFilter)
     );
 }
 
