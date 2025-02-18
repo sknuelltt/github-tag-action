@@ -108,8 +108,14 @@ export default async function main() {
     let previousTag: ReturnType<typeof getLatestTag> | null;
     let previousVersion: SemVer | null;
     if (!latestPrereleaseTag) {
+      core.info(
+        `latestPrereleaseTag not set, using latestTag.`
+      );
       previousTag = latestTag;
     } else {
+      core.info(`latestTag: ${latestTag.name}`);
+      core.info(`latestPrereleaseTag: ${latestPrereleaseTag.name}`);
+      core.info(`prefixRegex: ${prefixRegex.toString()}`);
       previousTag = gte(
         latestTag.name.replace(prefixRegex, ''),
         latestPrereleaseTag.name.replace(prefixRegex, '')
